@@ -1,0 +1,21 @@
+<h1><%= @quiz.question %></h1>
+
+<%= form_with url: answer_quiz_path(@quiz), method: :post do %>
+  <ul>
+    <% [@quiz.choice1, @quiz.choice2, @quiz.choice3, @quiz.choice4].each do |choice| %>
+      <li>
+        <%= radio_button_tag :choice, choice %>
+        <%= label_tag "choice_#{choice}", choice %>
+      </li>
+    <% end %>
+  </ul>
+  <%= submit_tag "回答する" %>
+<% end %>
+
+<% if flash[:notice] %>
+  <p style="color: green;"><%= flash[:notice] %></p>
+<% elsif flash[:alert] %>
+  <p style="color: red;"><%= flash[:alert] %></p>
+<% end %>
+
+<%= link_to "一覧へ戻る", quizzes_path %>
