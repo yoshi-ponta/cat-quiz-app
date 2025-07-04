@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # cat-quiz-app
 =======
 # README
