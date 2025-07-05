@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>App</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>ぽんちゃん検定</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -11,6 +10,12 @@
   </head>
 
   <body>
-    <%= yield %>
+    <header>
+      <h1>ぽんちゃん検定</h1>
+    </header>
+
+    <main>
+      <%= yield %> <!-- ここに各ビューの中身が入る -->
+    </main>
   </body>
 </html>
