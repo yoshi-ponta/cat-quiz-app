@@ -1,14 +1,13 @@
 <h1><%= @quiz.question %></h1>
 
 <%= form_with url: answer_quiz_path(@quiz), method: :post do %>
-  <ul>
-    <% [@quiz.choice1, @quiz.choice2, @quiz.choice3, @quiz.choice4].each do |choice| %>
-      <li>
-        <%= radio_button_tag :choice, choice %>
-        <%= label_tag "choice_#{choice}", choice %>
-      </li>
-    <% end %>
-  </ul>
+  <% @quiz.choices.each do |choice| %>
+    <label>
+      <%= radio_button_tag :choice, choice %>
+      <%= choice %>
+    </label><br>
+  <% end %>
+
   <%= submit_tag "回答する" %>
 <% end %>
 
@@ -18,4 +17,21 @@
   <p style="color: red;"><%= flash[:alert] %></p>
 <% end %>
 
-<%= link_to "一覧へ戻る", quizzes_path %>
+<% if flash[:explanation] %>
+  <p><strong>解説：</strong><%= flash[:explanation] %></p>
+  <% if flash[:next_quiz_path].blank? && flash[:back_to_top].blank? %>
+    <script>
+      // 解説表示後、3秒後に結果発表ページに自動遷移
+      setTimeout(function() {
+        window.location.href = "<%= result_quizzes_path %>";
+      }, 3000);
+    </script>
+  <% end %>
+<% end %>
+
+<%# 「次の問題」ボタンの表示 %>
+<% if flash[:next_quiz_path] %>
+  <%= link_to "次の問題", flash[:next_quiz_path], class: "btn btn-primary" %>
+<% elsif flash[:back_to_top] %>
+  <%= link_to "トップページへ戻る", flash[:back_to_top], class: "btn btn-secondary mt-3" %>
+<% end %>

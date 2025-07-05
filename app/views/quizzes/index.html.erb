@@ -1,9 +1,7 @@
-<h1>クイズ一覧</h1>
-
-<ul>
-  <% @quizzes.each do |quiz| %>
-    <li>
-      <%= link_to quiz.question, quiz_path(quiz) %>
-    </li>
-  <% end %>
-</ul>
+<main class="d-flex flex-column align-items-center text-center px-3 mt-5 mb-5">
+  <%= image_tag "pon_app_image.jpg", alt: "ぽんちゃん", class: "haikei mb-4", style: "max-height: 50vh; max-width: 100%; height: auto;" %>
+  <p class="mb-3" style="font-size: 1.25rem; line-height: 1.6;">
+    鳴き声を聞いてぽんちゃんの感情を当てよう！
+  </p>
+  <%= link_to "クイズへ", quiz_path(10),class: "btn btn-lg px-4 py-2 fw-bold text-white rounded-pill quiz_button"%>
+</main>
