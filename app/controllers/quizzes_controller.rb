@@ -12,7 +12,7 @@ class QuizzesController < ApplicationController
 
   def result
     @score = session[:score] || 0
-    session[:score] = nil  # リセット
+    session[:score] = nil  # スコアをリセットする
   end
 
   def answer
@@ -25,6 +25,7 @@ class QuizzesController < ApplicationController
     session[:score] ||= 0
 
     if params[:choice] == @quiz.correct_answer
+      session[:score] += 1
       flash[:notice] = "正解！"
     else
       flash[:alert] = "残念！"
