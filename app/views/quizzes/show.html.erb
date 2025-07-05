@@ -35,3 +35,10 @@
 <% elsif flash[:back_to_top] %>
   <%= link_to "トップページへ戻る", flash[:back_to_top], class: "btn btn-secondary mt-3" %>
 <% end %>
+
+<% if @quiz.audio_file.present? %>
+  <audio controls>
+    <source src="/audios/<%= @quiz.audio_file %>" type="audio/mpeg">
+    音声を再生できません
+  </audio>
+<% end %>
