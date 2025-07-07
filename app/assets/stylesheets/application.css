@@ -37,7 +37,126 @@ p {
 
 .quiz_button {
   display: block;
+  border-radius: 50px;
   width: 200px;
   margin: 0 auto;
   text-align: center;
+  background-color: #FF6666;
+  color: #ffffff;              /* 文字を白に */
+  border: none;                /* 枠線なし */
+  font-size: 1.2rem;
+  padding: 0.75rem 1rem;
+  text-decoration: none;
+}
+.quiz_button:hover {
+  background-color: #FF3333	;   /* ホバー時に少し暗めの赤 */
+}
+
+
+.quiz-form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;    /* 横中央 */
+  justify-content: center; /* 縦中央（高さが必要） */
+  min-height: 70vh;       /* 画面中央にしたい場合は高さが必要 */
+}
+
+.quiz-box {
+  background-color: #fffefa;
+  border: 2px solid #ffc107;
+  border-radius: 20px;
+  padding: 0rem;
+  max-width: 700px;
+  width: 100%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.quiz-question {
+  width: 100%;
+  text-align: center;
+  margin-top: 80px;
+  margin-bottom: 0rem;
+}
+
+.quiz-options {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-left: auto;
+  gap: 0.5rem;
+  width: 100%;
+  max-width: 350px;
+}
+
+.quiz-option-btn {
+  padding: 1rem;
+  border-radius: 2rem;
+  font-size: 1.1rem;
+}
+
+.btn-danger {
+  background-color: #e63946;   /* 明るめの赤 */
+  color: white;
+  border: none;
+  padding: 0.75rem 2rem;
+  font-size:0.9rem;
+  border-radius: 8px;
+}
+
+.btn-danger:hover {
+  background-color: #d62828;
+}
+
+.audio-icon {
+  width: 80px;
+  cursor: pointer;
+  position: relative;
+  left: 10px;
+  top:90px;
+  margin-left:200px;
+}
+
+#flash-messages-container {
+  position: fixed;
+  bottom: 300px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #000000;
+  border: 2px solid #FFCC33;
+  padding: 16px 16px;
+  border-radius: 20px;
+  max-width: 90%;
+  text-align: center;
+  font-size: 18px;
+  z-index: 9999;
+}
+
+/* 正解メッセージ */
+.flash-message.notice {
+  color: #28a745; /* 緑 */
+  font-weight: bold;
+  font-size: 22px;
+  margin-bottom: 25px;
+}
+
+/* 残念メッセージ */
+.flash-message.alert {
+  color: #dc3545; /* 赤 */
+  font-weight: bold;
+  font-size: 22px;
+  margin-bottom: 25px;
+}
+
+.flash-explanation {
+  color:000000;
+  font-size: 16px;
+  margin-top: 8px;
+  line-height: 1.4;
+}
+
+/* 「次の問題」「トップに戻る」ボタンの調整 */
+#flash-messages-container .btn {
+  margin-top: 12px;
+  min-width: 150px;
+  font-size: 16px;
 }
