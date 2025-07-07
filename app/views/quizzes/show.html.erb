@@ -1,44 +1,75 @@
-<h1><%= @quiz.question %></h1>
+<% unless flash[:notice] || flash[:alert] %>
+  <div class="quiz-form-container">
+    <div class="quiz-box">
+      <h1 class="quiz-question text-center my-4"><%= @quiz.question %></h1>
 
-<%= form_with url: answer_quiz_path(@quiz), method: :post do %>
-  <% @quiz.choices.each do |choice| %>
-    <label>
-      <%= radio_button_tag :choice, choice %>
-      <%= choice %>
-    </label><br>
-  <% end %>
+      <%= image_tag "speaker_icon.png", alt: "音声再生", class: "audio-icon", data: { audio_id: "audio-#{@quiz.id}" }, style: "cursor: pointer; width: 80px;" %>
+      <audio id="audio-<%= @quiz.id %>" style="display:none;">
+       <source src="/audios/<%= @quiz.audio_file %>" type="audio/mpeg">
+        音声を再生できません
+      </audio>
 
-  <%= submit_tag "回答する" %>
+
+      <!-- 選択肢フォーム -->
+      <%= form_with url: answer_quiz_path(@quiz), method: :post do %>
+        <div class="quiz-options row justify-content-center mt-4">
+          <% @quiz.choices.each do |choice| %>
+            <div class="col-12 col-md-6 mb-3 d-flex justify-content-center">
+              <label class="quiz-option-btn w-100 text-center">
+                <%= radio_button_tag :choice, choice, false, class: "visually-hidden" %>
+                <span><%= choice %></span>
+              </label>
+            </div>
+          <% end %>
+        </div>
+
+        <div class="quiz-submit" style="margin-top: 50px; margin-bottom: 40px; text-align: center;">
+          <%= submit_tag "回答する", class: "btn btn-danger btn-lg" %>
+        </div>
+      <% end %>
+    </div> <!-- .quiz-box -->
+  </div> <!-- .quiz-form-container -->
 <% end %>
 
-<% if flash[:notice] %>
-  <p style="color: green;"><%= flash[:notice] %></p>
-<% elsif flash[:alert] %>
-  <p style="color: red;"><%= flash[:alert] %></p>
+<% if flash[:notice] || flash[:alert] || flash[:explanation] || flash[:back_to_top] %>
+  <div id="flash-messages-container">
+    <% if flash[:notice] %>
+      <p class="flash-message notice"><%= flash[:notice] %></p>
+    <% elsif flash[:alert] %>
+      <p class="flash-message alert"><%= flash[:alert] %></p>
+    <% end %>
+
+    <% if flash[:explanation] %>
+      <p class="flash-explanation"><strong>解説：</strong><%= flash[:explanation] %></p>
+    <% end %>
+
+    <% if flash[:back_to_top] %>
+      <%= link_to "トップページへ戻る", flash[:back_to_top], class: "btn btn-secondary mt-3" %>
+    <% end %>
+  </div>
 <% end %>
 
-<% if flash[:explanation] %>
-  <p><strong>解説：</strong><%= flash[:explanation] %></p>
-  <% if flash[:next_quiz_path].blank? && flash[:back_to_top].blank? %>
-    <script>
-      // 解説表示後、3秒後に結果発表ページに自動遷移
-      setTimeout(function() {
-        window.location.href = "<%= result_quizzes_path %>";
-      }, 3000);
-    </script>
-  <% end %>
-<% end %>
-
-<%# 「次の問題」ボタンの表示 %>
 <% if flash[:next_quiz_path] %>
-  <%= link_to "次の問題", flash[:next_quiz_path], class: "btn btn-primary" %>
-<% elsif flash[:back_to_top] %>
-  <%= link_to "トップページへ戻る", flash[:back_to_top], class: "btn btn-secondary mt-3" %>
+  <div class="next-quiz-button-container" style="text-align: center; margin-top: 20px;">
+    <%= link_to "次の問題", flash[:next_quiz_path], class: "btn btn-primary" %>
+  </div>
 <% end %>
 
-<% if @quiz.audio_file.present? %>
-  <audio controls>
-    <source src="/audios/<%= @quiz.audio_file %>" type="audio/mpeg">
-    音声を再生できません
-  </audio>
-<% end %>
+<script>
+  document.addEventListener("turbo:load", function () {
+    const icons = document.querySelectorAll(".audio-icon");
+
+    icons.forEach(function (icon) {
+      icon.addEventListener("click", function () {
+        const audioId = icon.dataset.audioId;
+        const player = document.getElementById(audioId);
+        if (player) {
+          player.currentTime = 0;
+          player.play().catch(function (err) {
+            console.error("音声の再生に失敗しました:", err);
+          });
+        }
+      });
+    });
+  });
+</script>
