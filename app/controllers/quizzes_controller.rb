@@ -37,6 +37,7 @@ class QuizzesController < ApplicationController
       flash[:next_quiz_path] = quiz_path(next_quiz)
       redirect_to quiz_path(@quiz)
     else
+      flash[:auto_redirect_to_result] = true
       redirect_to quiz_path(@quiz)
     end
   end
