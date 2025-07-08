@@ -35,7 +35,7 @@ class QuizzesController < ApplicationController
     next_quiz = Quiz.where("id > ?", @quiz.id).order(:id).first
     if next_quiz
       flash[:next_quiz_path] = quiz_path(next_quiz)
-      redirect_to quiz_path(@quiz)
+      redirect_to quiz_path(next_quiz)
     else
       flash[:auto_redirect_to_result] = true
       redirect_to quiz_path(@quiz)
