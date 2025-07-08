@@ -1,4 +1,4 @@
-<% unless flash[:notice] || flash[:alert] %>
+<% unless flash[:notice] || flash[:alert] || flash[:explanation] || flash[:next_quiz_path] %>
   <div class="quiz-form-container">
     <div class="quiz-box">
       <h1 class="quiz-question text-center my-4"><%= @quiz.question %></h1>
@@ -33,7 +33,6 @@
     </div> <!-- .quiz-box -->
   </div> <!-- .quiz-form-container -->
 <% end %>
-
 <% if flash[:notice] || flash[:alert] || flash[:explanation] || flash[:back_to_top] %>
   <div id="flash-messages-container">
     <% if flash[:notice] %>
