@@ -16,7 +16,7 @@
       <!-- 選択肢フォーム -->
       <%= form_with url: answer_quiz_path(@quiz), method: :post do %>
         <div class="quiz-options row justify-content-center mt-4">
-          <% @quiz.choices.each do |choice| %>
+          <% [@quiz.choice1, @quiz.choice2, @quiz.choice3, @quiz.choice4].each do |choice| %>
             <div class="col-12 col-md-6 mb-3 d-flex justify-content-center">
               <label class="quiz-option-btn w-100 text-center">
                 <%= radio_button_tag :choice, choice, false, class: "visually-hidden" %>

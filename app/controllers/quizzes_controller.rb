@@ -24,7 +24,7 @@ class QuizzesController < ApplicationController
 
     session[:score] ||= 0
 
-    if params[:choice] == @quiz.correct_answer
+    if params[:choice].to_s.strip == @quiz.correct_answer.to_s.strip
       session[:score] += 1
       flash[:notice] = "正解！"
     else
