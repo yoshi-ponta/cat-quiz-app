@@ -10,17 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_07_05_061429) do
+ActiveRecord::Schema[7.2].define(version: 2025_07_09_062817) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "quizzes", force: :cascade do |t|
     t.string "question"
-    t.string "answer"
-    t.string "choice1"
-    t.string "choice2"
-    t.string "choice3"
-    t.string "choice4"
     t.text "explanation"
     t.text "nation"
     t.datetime "created_at", null: false
@@ -29,5 +24,4 @@ ActiveRecord::Schema[7.1].define(version: 2025_07_05_061429) do
     t.string "correct_answer"
     t.string "audio_file"
   end
-
 end
