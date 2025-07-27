@@ -10,4 +10,11 @@ Rails.application.routes.draw do
       get :result
     end
   end
+
+  if Rails.env.production?
+    get "/run_seed" => proc {
+      Rails.application.load_seed
+      [200, { "Content-Type" => "text/plain" }, ["✅ Seed executed successfully."]]
+    }
+  end
 end
