@@ -1,25 +1,39 @@
-version: '3.9'
 services:
   db:
-    image: postgres:15
-    volumes:
-      - db_data:/var/lib/postgresql/data
+    image: postgres
+    restart: always
     environment:
+      TZ: Asia/Tokyo
       POSTGRES_PASSWORD: password
-      POSTGRES_USER: postgres
-      POSTGRES_DB: app_development
-
-  web:
-    build: .
-    command: bash -c "./entrypoint.sh"
-    environment:
-      RAILS_ENV: development
     volumes:
-      - .:/rails
+      - postgresql_data:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -d myapp_development -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    command: bash -c "bundle install && bundle exec rails db:prepare && rm -f tmp/pids/server.pid && bundle exec rails server -b 0.0.0.0 -p 3000"
+    tty: true
+    stdin_open: true
+    volumes:
+      - .:/myapp
+      - bundle_data:/usr/local/bundle:cached
+      - node_modules:/myapp/node_modules
+    environment:
+      TZ: Asia/Tokyo
+      SECRET_KEY_BASE: 4bc0d94a2ef50e6b26ede6e70da9985679453ccb1f94624b1f1d87a36a2a2dc61b445d4be8ac9cf258af74f92a01398111c79a0a2793b1ee8fa9d2b31e98be7a
     ports:
       - "3001:3000"
     depends_on:
-      - db
-
+      db:
+        condition: service_healthy
 volumes:
-  db_data:
+  bundle_data:
+  postgresql_data:
+  node_modules:
