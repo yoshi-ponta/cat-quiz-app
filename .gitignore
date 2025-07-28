@@ -36,3 +36,4 @@
 
 /config/credentials/production.key
 config/master.key
+config/credentials.yml.enc.bak
