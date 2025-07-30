@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_07_09_062817) do
+ActiveRecord::Schema[7.2].define(version: 2025_07_30_121459) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -20,8 +20,11 @@ ActiveRecord::Schema[7.2].define(version: 2025_07_09_062817) do
     t.text "nation"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.text "choices"
     t.string "correct_answer"
     t.string "audio_file"
+    t.string "choice1"
+    t.string "choice2"
+    t.string "choice3"
+    t.string "choice4"
   end
 end
