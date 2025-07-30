@@ -29,7 +29,7 @@ services:
       TZ: Asia/Tokyo
       SECRET_KEY_BASE: 4bc0d94a2ef50e6b26ede6e70da9985679453ccb1f94624b1f1d87a36a2a2dc61b445d4be8ac9cf258af74f92a01398111c79a0a2793b1ee8fa9d2b31e98be7a
     ports:
-      - "3001:3000"
+      - "3000:3000"
     depends_on:
       db:
         condition: service_healthy
