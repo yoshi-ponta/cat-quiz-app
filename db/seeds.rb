@@ -1,3 +1,6 @@
+return if Quiz.exists?
+
+
 Quiz.create!(
   question: "Q1.何と言っているでしょう？",
   choice1: "遊ぼう",
