@@ -12,7 +12,7 @@ class QuizzesController < ApplicationController
 
   def result
     @score = session[:score] || 0
-    session[:score] = nil  # スコアをリセットする
+    session[:score] = nil
   end
 
   def answer
