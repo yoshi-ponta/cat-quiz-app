@@ -52,7 +52,5 @@ quiz_data = [
 ]
 
 quiz_data.each do |data|
-  Quiz.find_or_create_by!(question: data[:question]) do |quiz|
-    quiz.assign_attributes(data)
-  end
+  Quiz.create!(data)
 end
