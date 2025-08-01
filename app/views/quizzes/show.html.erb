@@ -2,9 +2,9 @@
   <div class="quiz-form-container">
     <div class="quiz-box">
       <h1 class="quiz-question text-center my-4 fs-4"><%= @quiz.question %></h1>
-<div style="display: flex; align-items: center; justify-content: center; gap: 8px; margin-bottom: 20px;">
+<div style="display: flex; align-items: center; justify-content: center; gap: 8px; margin-bottom: 0px; margin-top: -40px;">
   <%= image_tag "speaker_icon.png", alt: "音声再生", class: "audio-icon", data: { audio_id: "audio-#{@quiz.id}" }, style: "cursor: pointer; width: 80px;" %>
-  <span style="font-size: 14px; color: #555;">クリックで音声再生</span>
+  <span style="font-size: 14px; color: #555; ">クリックで音声再生</span>
 </div>
 
       <audio id="audio-<%= @quiz.id %>" style="display:none;">
@@ -15,7 +15,7 @@
 
       <!-- 選択肢フォーム -->
       <%= form_with url: answer_quiz_path(@quiz), method: :post do %>
-        <div class="quiz-options row justify-content-center mt-4">
+        <div class="quiz-options row justify-content-center mt-2 fs-4">
           <% @quiz.choices_array.each do |choice| %>
             <div class="col-12 col-md-6 mb-3">
               <label class="quiz-option-btn w-100 text-center d-block">
