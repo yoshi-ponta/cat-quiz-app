@@ -7,12 +7,10 @@
   <span style="font-size: 11px; color: #555; ">クリックで<br>音声再生</span>
 </div>
 
-      <audio id="audio-<%= @quiz.id %>" style="display:none;">
-       <source src="/audios/<%= @quiz.audio_file %>" type="audio/mpeg">
-        音声を再生できません
-      </audio>
-
-
+ <audio id="audio-<%= @quiz.id %>" style="display:none;">
+   <source src="/audios/<%= @quiz.audio_file %>" type="audio/mpeg">
+      音声を再生できません
+ </audio>
       <!-- 選択肢フォーム -->
       <%= form_with url: answer_quiz_path(@quiz), method: :post do %>
         <div class="quiz-options row justify-content-center mt-2 fs-4">
