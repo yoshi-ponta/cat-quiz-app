@@ -9,7 +9,7 @@
   <% end %>
 
   <div class="button-container">
-    <%= link_to "Xで投稿","https://twitter.com/intent/tweet?text=#{ERB::Util.url_encode("クイズ結果は#{@score}点でした！ #ぽんちゃん検定")}",
+    <%= link_to "Xで投稿","https://twitter.com/intent/tweet?text=#{ERB::Util.url_encode("クイズ結果は#{@score}点でした！ #ぽんちゃん検定 https://cat-quiz-app.onrender.com")}",
       target: "_blank",
       rel: "noopener",
       class: "custom-share-button" %>
