@@ -4,10 +4,8 @@
 
   <% if @score >= 5 %>
     <p class="result-message success">すごい！ぽんちゃんもびっくり！😻</p>
-    <%= image_tag "happy_cat.png", class: "result-image" %>
   <% else %>
     <p class="result-message warning">もう少し頑張るニャン…。😿</p>
-    <%= image_tag "sad_cat.png", class: "result-image" %>
   <% end %>
 
   <div class="button-container">
