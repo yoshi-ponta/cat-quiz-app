@@ -42,7 +42,7 @@ quiz_data = [
   {
     question: "Q5.何と言っているでしょう？",
     choice1: "びっくりした",
-    choice2: "あなかすいた",
+    choice2: "おなかすいた",
     choice3: "離れないで",
     choice4: "一緒に遊んで",
     correct_answer: "離れないで",
