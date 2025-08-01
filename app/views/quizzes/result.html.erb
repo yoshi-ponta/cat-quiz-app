@@ -10,13 +10,12 @@
     <%= image_tag "sad_cat.png", class: "result-image" %>
   <% end %>
 
-  <div class="share-button-container">
-    <%= link_to "Xで投稿",
-      "https://twitter.com/intent/tweet?text=#{ERB::Util.url_encode("クイズ結果は#{@score}点でした！ #猫クイズ")}",
+  <div class="button-container">
+    <%= link_to "Xで投稿","https://twitter.com/intent/tweet?text=#{ERB::Util.url_encode("クイズ結果は#{@score}点でした！ #ぽんちゃん検定")}",
       target: "_blank",
       rel: "noopener",
       class: "custom-share-button" %>
-  </div>
 
-  <%= link_to "トップへ戻る", root_path, class: "custom-back-button" %>
+    <%= link_to "トップへ戻る", root_path, class: "custom-back-button" %>
+  </div>
 </div>

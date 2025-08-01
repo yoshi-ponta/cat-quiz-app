@@ -22,7 +22,7 @@ services:
     tty: true
     stdin_open: true
     volumes:
-      #- .:/myapp
+      - .:/myapp
       - bundle_data:/usr/local/bundle:cached
       - node_modules:/myapp/node_modules
     environment:

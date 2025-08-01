@@ -3,11 +3,11 @@ body {
 }
 
 .haikei {
-  display: block;          /* 画像をブロック要素に */
+  display: block;
   border-radius: 50px;
-  margin: 0 auto;          /* 左右のマージンを自動にして中央寄せ */
-  width: auto;            /* 画像の幅 */
-  height: 200px;            /* 高さは自動で比率を維持 */
+  margin: 0 auto;
+  width: auto;
+  height: 200px;
   padding: 1rem;
   text-align: center;
 }
@@ -67,7 +67,7 @@ p {
   border-radius: 20px;
   padding: 0rem;
   max-width: 700px;
-  width: 100%;
+  width: 90%;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
@@ -75,16 +75,17 @@ p {
   width: 100%;
   text-align: center;
   margin-top: 80px;
-  margin-bottom: 0rem;
+  font-size: 25px;
 }
 
 .quiz-options {
+  margin-top: 10px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   margin-left: auto;
   gap: 0.5rem;
-  width: 100%;
+  width: 55%;
   max-width: 350px;
 }
 
@@ -140,7 +141,7 @@ p {
   margin-left: 10px;
   font-size: 14px;
   position: relative;
-  right: 270px;
+  right: 240px;
   bottom: -150px;
   color: #555;
 }
@@ -155,7 +156,8 @@ p {
   border: 2px solid #FFCC33;
   padding: 16px 16px;
   border-radius: 20px;
-  max-width: 90%;
+  max-width: 150%;
+  width: 85%;
   text-align: center;
   font-size: 18px;
   z-index: 9999;
@@ -228,7 +230,7 @@ p {
   padding: 12px 15px;
   border-radius: 30px;
   position: relative;
-  left: 100px;
+  left: -100px;
   bottom: 50px;
   border: none;
   text-decoration: none;
@@ -247,9 +249,11 @@ p {
   border-radius: 30px;
   font-size: 20px;
   position: relative;
-  left: 350px;
+  left: 200px;
+  top: -50px;
   text-decoration: none;
   display: inline-block;
+  margin-left: 15px;
   margin-top: 20px;
   transition: background-color 0.3s ease;
 }
