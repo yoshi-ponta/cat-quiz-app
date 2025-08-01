@@ -12,7 +12,7 @@ class QuizzesController < ApplicationController
 
   def result
     @score = session[:score] || 0
-    session[:score] = nil
+    session[:score] = nil  # スコアをリセットする
   end
 
   def answer
@@ -38,7 +38,7 @@ class QuizzesController < ApplicationController
       redirect_to quiz_path(next_quiz)
     else
       flash[:auto_redirect_to_result] = true
-      redirect_to result_quizzes_path
+      redirect_to quiz_path(@quiz)
     end
   end
 end
