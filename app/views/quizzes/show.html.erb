@@ -2,10 +2,10 @@
   <div class="quiz-form-container">
     <div class="quiz-box">
       <h1 class="quiz-question text-center my-4 fs-4"><%= @quiz.question %></h1>
-<div style="display: flex; align-items: center; justify-content: center; gap: 8px; margin-bottom: 0px; margin-top: -40px;">
-  <%= image_tag "speaker_icon.png", alt: "音声再生", class: "audio-icon", data: { audio_id: "audio-#{@quiz.id}" }, style: "cursor: pointer; width: 80px;" %>
-  <span style="font-size: 11px; color: #555; ">クリックで<br>音声再生</span>
-</div>
+      <div style="display: flex; align-items: center; justify-content: center; gap: 8px; margin-bottom: 0px; margin-top: -40px;">
+        <%= image_tag "speaker_icon.png", alt: "音声再生", class: "audio-icon", data: { audio_id: "audio-#{@quiz.id}" }, style: "cursor: pointer; width: 80px;" %>
+         <span style="font-size: 11px; color: #555; ">クリックで<br>音声再生</span>
+      </div>
 
  <audio id="audio-<%= @quiz.id %>" style="display:none;">
    <source src="/audios/<%= @quiz.audio_file %>" type="audio/mpeg">
