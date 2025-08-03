@@ -1,3 +1,5 @@
+Quiz.delete_all
+
 quiz_data = [
   {
     question: "Q1.何と言っているでしょう？",
