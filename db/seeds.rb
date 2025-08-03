@@ -50,7 +50,6 @@ quiz_data = [
     audio_file: "audio_2025_07_05_14_54_47.mp3"
   }
 ]
-
 quiz_data.each do |data|
   Quiz.create!(data)
 end
