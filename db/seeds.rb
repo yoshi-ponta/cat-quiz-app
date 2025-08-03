@@ -1,4 +1,4 @@
-Quiz.delete_all
+ActiveRecord::Base.connection.reset_pk_sequence!('quizzes')
 
 quiz_data = [
   {
