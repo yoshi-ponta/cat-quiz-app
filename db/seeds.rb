@@ -1,5 +1,3 @@
-ActiveRecord::Base.connection.reset_pk_sequence!('quizzes')
-
 quiz_data = [
   {
     question: "Q1.何と言っているでしょう？",
